@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class webnews extends AppCompatActivity {
     WebView webView;
 
-int position;
+
     void initViews(){
         webView = findViewById(R.id.webView);
 
@@ -19,30 +19,29 @@ int position;
 
         webView.getSettings().setJavaScriptEnabled(true);
         Intent rcv = getIntent();
-        String news=rcv.getStringExtra("news");
-         position = rcv.getIntExtra("position",0);
 
-         switch (position){
-             case 0: webView.loadUrl("https://aajtak.intoday.in/");
-             break;
+        //String position=rcv.getStringExtra("position");
+        int position=rcv.getIntExtra("position",0);
+         if (position == 0) {
+             getSupportActionBar().setTitle("AAj Tak");
+             webView.loadUrl("https://aajtak.intoday.in/");
+         }else if (position==1)
+        {   getSupportActionBar().setTitle("Zee News");
+            webView.loadUrl("http://zeenews.india.com/");
+        }
+        else if (position == 2) {
+             getSupportActionBar().setTitle("News18");
+            webView.loadUrl("https://www.news18.com/");
+        }
+        else if (position == 3) {
+             getSupportActionBar().setTitle("DD News");
+            webView.loadUrl("http://ddnews.gov.in/");
+        }
+        else if (position == 4) {
+             getSupportActionBar().setTitle("NDTV");
+            webView.loadUrl("https://www.ndtv.com/");
+        }
 
-             case 1: webView.loadUrl("http://zeenews.india.com/");
-             break;
-
-             case 2:  webView.loadUrl("https://www.news18.com/");
-                 break;
-
-             case 3: webView.loadUrl("http://ddnews.gov.in/");
-                 break;
-
-             case 4:  webView.loadUrl("https://www.ndtv.com/");
-                 break;
-         }
-
-
-
-
-        //getSupportActionBar().setTitle("NDTV");
         //getSupportActionBar().hide();
     }
 

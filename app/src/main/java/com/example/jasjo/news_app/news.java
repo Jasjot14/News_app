@@ -42,11 +42,11 @@ public class news extends AppCompatActivity implements AdapterView.OnItemClickLi
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String news = adapter.getItem(position);
-        int iposition = Integer.parseInt(String.valueOf(news));
+        //int iposition = Integer.parseInt(String.valueOf(news));
         Toast.makeText(this,"You Selected: "+news,Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(news.this,webnews.class);
-        intent.putExtra("position",iposition);
+        intent.putExtra("position",position);
         startActivity(intent);
     }
 }
